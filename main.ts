@@ -1,10 +1,9 @@
 Puls.SetValues(
+500,
+550,
 0,
-700,
-0,
-100
+1024
 )
 basic.forever(function () {
     Puls.Puls_highlow()
-    Puls.Hjärtslag()
 })

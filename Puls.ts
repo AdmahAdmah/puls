@@ -9,7 +9,7 @@ Skriv vad här
  * @param s describe parameter here, eg: "Hello"
  * @param e describe parameter here
  */
-    //% block
+    //% block="Visa puls"
 export function Puls_highlow() {
     serial.writeLine("" + (pins.map(
         pins.analogReadPin(AnalogPin.P0),
@@ -23,6 +23,7 @@ let Hog = 0
 let Lag = 1023
 let Max = 0
 let Min = 200
+let Ljus = 0
 
 Min = 0
 Max = 1023
@@ -42,11 +43,14 @@ Hog = 200
         Lag = value3
         Hog = value4
     }
-    //% block="low high graph"
+    //% block="Hjärtslag"
     export function Hjärtslag() {
-        led.plotBarGraph(
-            pins.analogReadPin(AnalogPin.P0),
-            1023
-    )
+        basic.showIcon(IconNames.Heart)
+        Ljus = 250
+        for (let index = 0; index < 10; index++) {
+            Ljus += -25
+            led.setBrightness(Ljus)
+            basic.pause(100)
+        }
     }
 }
